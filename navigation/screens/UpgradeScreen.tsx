@@ -3,7 +3,7 @@ import React from "react";
 
 const UpgradeScreen = () => {
   return (
-    <View>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>UpgradeScreen</Text>
     </View>
   );

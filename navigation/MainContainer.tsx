@@ -1,8 +1,11 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
 //icons
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
@@ -13,43 +16,53 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import HomeScreen from "./screens/HomeScreen";
 import LeaderBoardScreen from "./screens/LeaderBoardScreen";
 import UpgradeScreen from "./screens/UpgradeScreen";
+import { Header } from "react-native/Libraries/NewAppScreen";
 
 //ScreenNames
-const HomeName = "home";
-const UpgradesName = "upgrade";
-const LeaderBoardName = "leaderboard";
+const HomeName = "Cookie";
+const UpgradesName = "Upgrade";
+const LeaderBoardName = "Leaderboard";
 
 const Tab = createBottomTabNavigator();
 
 const MainContainer = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        initialRouteName="HomeName"
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName = "";
-            let rn = route.name;
+    <Tab.Navigator
+      initialRouteName={HomeName} // Updated here
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let rn = route.name;
 
-            if (rn === HomeName) {
-              return (
-                <FontAwesome5 name="cookie-bite" size={24} color="black" />
-              );
-            } else if (rn === UpgradesName) {
-              return <Entypo name="arrow-up" size={24} color="black" />;
-            } else if (rn === LeaderBoardName) {
-              return (
-                <MaterialIcons name="leaderboard" size={24} color="black" />
-              );
-            }
-          },
-        })}
-      >
-        <Tab.Screen name={HomeName} component={HomeScreen} />
-        <Tab.Screen name={UpgradesName} component={UpgradeScreen} />
-        <Tab.Screen name={LeaderBoardName} component={LeaderBoardScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+          if (rn === HomeName) {
+            return <FontAwesome5 name="cookie-bite" size={24} color="brown" />;
+          } else if (rn === UpgradesName) {
+            return <Entypo name="arrow-up" size={24} color="black" />;
+          } else if (rn === LeaderBoardName) {
+            return <MaterialIcons name="leaderboard" size={34} color="black" />;
+          }
+          return null; // Default return
+        },
+        tabBarStyle: {
+          width: wp(90),
+          height: hp(8),
+          paddingTop: hp(1),
+          borderRadius: wp(50),
+          marginBottom: hp(1.5),
+        },
+        tabBarLabelStyle: {
+          marginBottom: 10, // Adds space between the icon and label
+        },
+        tabBarItemStyle: {
+          // Adds space between the icons
+          marginHorizontal: 10,
+        },
+        headerShown: false,
+      })}
+    >
+      <Tab.Screen name={HomeName} component={HomeScreen} />
+      <Tab.Screen name={UpgradesName} component={UpgradeScreen} />
+      <Tab.Screen name={LeaderBoardName} component={LeaderBoardScreen} />
+    </Tab.Navigator>
   );
 };
 
