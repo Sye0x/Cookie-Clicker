@@ -11,7 +11,7 @@ const CookieScore = ({ Click }: any) => {
 
   // useEffect to update cookieScore whenever Click prop changes
   useEffect(() => {
-    setCookieScore(cookieScore + 1); // Update cookieScore based on Click prop
+    setCookieScore(cookieScore + 0.1); // Update cookieScore based on Click prop
   }, [Click]); // Dependency array ensures this runs only when Click changes
 
   return (
