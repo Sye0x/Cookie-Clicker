@@ -11,7 +11,8 @@ const CookieScore = ({ Click }: any) => {
 
   // useEffect to update cookieScore whenever Click prop changes
   useEffect(() => {
-    setCookieScore(cookieScore + 0.1); // Update cookieScore based on Click prop
+    // Round cookieScore to 1 decimal place and update state
+    setCookieScore((prevScore) => Math.round((prevScore + 0.01) * 100) / 100);
   }, [Click]); // Dependency array ensures this runs only when Click changes
 
   return (

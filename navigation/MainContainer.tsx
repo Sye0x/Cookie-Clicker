@@ -34,11 +34,15 @@ const MainContainer = () => {
           let rn = route.name;
 
           if (rn === HomeName) {
-            return <FontAwesome5 name="cookie-bite" size={24} color="brown" />;
+            return (
+              <FontAwesome5 name="cookie-bite" size={24} color="#a85f34" />
+            );
           } else if (rn === UpgradesName) {
-            return <Entypo name="arrow-up" size={24} color="black" />;
+            return <Entypo name="arrow-up" size={24} color="#a85f34" />;
           } else if (rn === LeaderBoardName) {
-            return <MaterialIcons name="leaderboard" size={34} color="black" />;
+            return (
+              <MaterialIcons name="leaderboard" size={34} color="#a85f34" />
+            );
           }
           return null; // Default return
         },
@@ -48,9 +52,11 @@ const MainContainer = () => {
           paddingTop: hp(1),
           borderRadius: wp(50),
           marginBottom: hp(1.5),
+          backgroundColor: "#f3b366",
         },
         tabBarLabelStyle: {
           marginBottom: 10, // Adds space between the icon and label
+          color: "#603928",
         },
         tabBarItemStyle: {
           // Adds space between the icons
