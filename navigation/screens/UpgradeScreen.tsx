@@ -9,6 +9,7 @@ import {
 //components
 import CookieScore from "@/component/CookieScore";
 import Money from "@/component/Money";
+import Entypo from "@expo/vector-icons/Entypo";
 
 const UpgradeScreen = () => {
   return (
@@ -41,7 +42,16 @@ const UpgradeScreen = () => {
             </Text>
           </View>
         </Pressable>
-        <Text style={styles.heading}>Upgrade</Text>
+
+        <View style={styles.headingBox}>
+          <Text style={styles.heading}>Upgrades</Text>
+          <Entypo
+            name="arrow-up"
+            size={hp(5)}
+            color="#fabf5f"
+            style={{ paddingTop: hp(0.5) }}
+          />
+        </View>
       </View>
     </View>
   );
@@ -72,16 +82,22 @@ const styles = StyleSheet.create({
     height: hp(6),
   },
   heading: {
-    marginVertical: hp(4),
     fontSize: hp(4),
     fontWeight: "600",
     color: "#fabf5f",
-    backgroundColor: "#d27d2f",
+
     textAlign: "center",
-    height: hp(7.5),
-    paddingTop: hp(1),
+
+    paddingTop: hp(0.5),
+  },
+  headingBox: {
+    marginVertical: hp(4),
     borderWidth: wp(1.2),
     borderRadius: wp(5),
     borderColor: "#603928",
+    backgroundColor: "#d27d2f",
+    height: hp(7.5),
+    flexDirection: "row",
+    justifyContent: "center",
   },
 });
