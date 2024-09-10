@@ -24,8 +24,11 @@ const HomeScreen = ({ navigation }) => {
       <CookieScore Click={Clicks} />
       <Money />
       <Pressable
-        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         onPress={CookieClick}
+        style={({ pressed }) => [
+          { flex: 1, justifyContent: "center", alignItems: "center" },
+          pressed && { opacity: 0.5 },
+        ]}
       >
         <Image
           style={{ height: hp(40), width: hp(40) }}
@@ -46,7 +49,9 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   SellContainer: {
     marginBottom: hp(2.5),
-    borderWidth: 2,
+    width: wp(90),
+    alignItems: "flex-end",
+    paddingRight: wp(6),
   },
   sellButton: {
     borderWidth: wp(1),
