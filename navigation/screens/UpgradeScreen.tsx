@@ -19,7 +19,7 @@ const UpgradeScreen = () => {
       <View
         style={{
           flex: 1,
-          marginVertical: hp(8),
+          marginVertical: hp(5),
         }}
       >
         <Pressable style={styles.itembox}>
@@ -52,6 +52,47 @@ const UpgradeScreen = () => {
             style={{ paddingTop: hp(0.5) }}
           />
         </View>
+        <View
+          style={{
+            marginTop: hp(4),
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <Pressable
+            style={({ pressed }) => [
+              styles.boxcontainer,
+              pressed && { opacity: 0.8 },
+            ]}
+          >
+            <Image
+              source={require("../../assets/images/Cookie3.png")}
+              style={styles.Imagelook2}
+            />
+            <Text style={styles.boxtext}>Per Click +0.1</Text>
+          </Pressable>
+          <Pressable
+            style={({ pressed }) => [
+              styles.boxcontainer,
+              pressed && { opacity: 0.8 },
+            ]}
+          >
+            <Image
+              source={require("../../assets/images/Money.png")}
+              style={styles.Imagelook3}
+            />
+            <Text style={styles.boxtext}>
+              Per
+              {
+                <Image
+                  source={require("../../assets/images/Cookie3.png")}
+                  style={styles.Imagelook4}
+                />
+              }{" "}
+              +0.1$
+            </Text>
+          </Pressable>
+        </View>
       </View>
     </View>
   );
@@ -60,6 +101,19 @@ const UpgradeScreen = () => {
 export default UpgradeScreen;
 
 const styles = StyleSheet.create({
+  boxcontainer: {
+    borderWidth: wp(1.5),
+    borderColor: "#603928",
+    backgroundColor: "#f3b366",
+    height: wp(42),
+    width: wp(42),
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  boxtext: {
+    fontSize: wp(5),
+    color: "#603928",
+  },
   itembox: {
     borderWidth: wp(0.8),
     borderColor: "#603928",
@@ -80,6 +134,19 @@ const styles = StyleSheet.create({
   Imagelook: {
     width: wp(10),
     height: hp(6),
+  },
+  Imagelook2: {
+    width: wp(12),
+    height: hp(8),
+  },
+  Imagelook3: {
+    width: wp(21),
+    height: hp(8),
+  },
+  Imagelook4: {
+    width: wp(8),
+    height: hp(4),
+    paddingLeft: wp(1),
   },
   heading: {
     fontSize: hp(4),

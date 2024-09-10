@@ -1,8 +1,7 @@
 import { View, Text, Image, Pressable, StyleSheet } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import CookieScore from "@/component/CookieScore";
 import Money from "@/component/Money";
-import { useState } from "react";
 
 import {
   widthPercentageToDP as wp,
@@ -11,6 +10,7 @@ import {
 
 const HomeScreen = ({ navigation }) => {
   const [Clicks, setClick] = useState(0);
+  const [showInfo, setShowInfo] = useState(false); // State to manage the visibility of text
 
   function CookieClick() {
     if (Clicks === 1) {
@@ -19,6 +19,7 @@ const HomeScreen = ({ navigation }) => {
       setClick(1);
     }
   }
+
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <CookieScore Click={Clicks} />
@@ -27,7 +28,7 @@ const HomeScreen = ({ navigation }) => {
         onPress={CookieClick}
         style={({ pressed }) => [
           { flex: 1, justifyContent: "center", alignItems: "center" },
-          pressed && { opacity: 0.5 },
+          pressed && { opacity: 0.8 },
         ]}
       >
         <Image
@@ -36,7 +37,17 @@ const HomeScreen = ({ navigation }) => {
         />
       </Pressable>
       <View style={styles.SellContainer}>
-        <Pressable style={styles.sellButton}>
+        {showInfo && ( // Conditionally render the text inside a <Text> component
+          <Text style={styles.infoText}>1 Cookie = 1$</Text>
+        )}
+        <Pressable
+          style={({ pressed }) => [
+            styles.sellButton,
+            pressed && { opacity: 0.6 },
+          ]}
+          onLongPress={() => setShowInfo(true)} // Show text on long press
+          onPressOut={() => setShowInfo(false)} // Hide text when the press is released
+        >
           <Text style={styles.SellText}>$</Text>
         </Pressable>
       </View>
@@ -52,6 +63,8 @@ const styles = StyleSheet.create({
     width: wp(90),
     alignItems: "flex-end",
     paddingRight: wp(6),
+    flexDirection: "row",
+    justifyContent: "flex-end",
   },
   sellButton: {
     borderWidth: wp(1),
@@ -59,7 +72,6 @@ const styles = StyleSheet.create({
     borderColor: "#a85f34",
     width: wp(17),
     height: wp(17),
-
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#f3b366",
@@ -67,5 +79,19 @@ const styles = StyleSheet.create({
   SellText: {
     color: "#a85f34",
     fontSize: wp(6.5),
+  },
+  infoText: {
+    fontSize: wp(6),
+    height: hp(6),
+    color: "#000",
+    marginBottom: hp(2.5),
+    paddingHorizontal: wp(2),
+    marginRight: wp(2),
+    color: "#a85f34",
+    backgroundColor: "#f3b366",
+    paddingTop: hp(1),
+    borderWidth: wp(1),
+    borderRadius: wp(100),
+    borderColor: "#a85f34",
   },
 });
