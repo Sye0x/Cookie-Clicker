@@ -1,44 +1,18 @@
+// CookieScore.tsx
 import { View, Text, Image } from "react-native";
-import React, { useState, useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useEffect } from "react";
+import { useCookieScore } from "./CookieScoreContext"; // Adjust the import as necessary
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
 const CookieScore = ({ Click }: any) => {
-  const [cookieScore, setCookieScore] = useState(0);
-
-  // Function to save the score in AsyncStorage
-  const saveCookieScore = async (score: number) => {
-    try {
-      await AsyncStorage.setItem("@cookieScore", score.toString());
-    } catch (e) {
-      console.error("Failed to save cookie score:", e);
-    }
-  };
-
-  // Function to load the score from AsyncStorage
-  const loadCookieScore = async () => {
-    try {
-      const storedScore = await AsyncStorage.getItem("@cookieScore");
-      if (storedScore !== null) {
-        setCookieScore(parseFloat(storedScore));
-      }
-    } catch (e) {
-      console.error("Failed to load cookie score:", e);
-    }
-  };
-
-  // useEffect to load the score when the component mounts
-  useEffect(() => {
-    loadCookieScore();
-  }, []);
+  const { cookieScore, saveCookieScore } = useCookieScore(); // Use the context
 
   // useEffect to update cookieScore whenever Click prop changes and save the score
   useEffect(() => {
     const newScore = Math.round((cookieScore + 0.01) * 100) / 100;
-    setCookieScore(newScore);
     saveCookieScore(newScore); // Save the updated score
   }, [Click]);
 

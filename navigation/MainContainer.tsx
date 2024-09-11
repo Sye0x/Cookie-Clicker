@@ -16,6 +16,7 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import HomeScreen from "./screens/HomeScreen";
 import LeaderBoardScreen from "./screens/LeaderBoardScreen";
 import UpgradeScreen from "./screens/UpgradeScreen";
+import { CookieScoreProvider } from "@/component/CookieScoreContext";
 import { Header } from "react-native/Libraries/NewAppScreen";
 
 //ScreenNames
@@ -27,48 +28,50 @@ const Tab = createBottomTabNavigator();
 
 const MainContainer = () => {
   return (
-    <Tab.Navigator
-      initialRouteName={HomeName} // Updated here
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let rn = route.name;
+    <CookieScoreProvider>
+      <Tab.Navigator
+        initialRouteName={HomeName} // Updated here
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let rn = route.name;
 
-          if (rn === HomeName) {
-            return (
-              <FontAwesome5 name="cookie-bite" size={24} color="#a85f34" />
-            );
-          } else if (rn === UpgradesName) {
-            return <Entypo name="arrow-up" size={24} color="#a85f34" />;
-          } else if (rn === LeaderBoardName) {
-            return (
-              <MaterialIcons name="leaderboard" size={34} color="#a85f34" />
-            );
-          }
-          return null; // Default return
-        },
-        tabBarStyle: {
-          width: wp(90),
-          height: hp(8),
-          paddingTop: hp(1),
-          borderRadius: wp(50),
-          marginBottom: hp(1.5),
-          backgroundColor: "#f3b366",
-        },
-        tabBarLabelStyle: {
-          marginBottom: 10, // Adds space between the icon and label
-          color: "#603928",
-        },
-        tabBarItemStyle: {
-          // Adds space between the icons
-          marginHorizontal: 10,
-        },
-        headerShown: false,
-      })}
-    >
-      <Tab.Screen name={HomeName} component={HomeScreen} />
-      <Tab.Screen name={UpgradesName} component={UpgradeScreen} />
-      <Tab.Screen name={LeaderBoardName} component={LeaderBoardScreen} />
-    </Tab.Navigator>
+            if (rn === HomeName) {
+              return (
+                <FontAwesome5 name="cookie-bite" size={24} color="#a85f34" />
+              );
+            } else if (rn === UpgradesName) {
+              return <Entypo name="arrow-up" size={24} color="#a85f34" />;
+            } else if (rn === LeaderBoardName) {
+              return (
+                <MaterialIcons name="leaderboard" size={34} color="#a85f34" />
+              );
+            }
+            return null; // Default return
+          },
+          tabBarStyle: {
+            width: wp(90),
+            height: hp(8),
+            paddingTop: hp(1),
+            borderRadius: wp(50),
+            marginBottom: hp(1.5),
+            backgroundColor: "#f3b366",
+          },
+          tabBarLabelStyle: {
+            marginBottom: 10, // Adds space between the icon and label
+            color: "#603928",
+          },
+          tabBarItemStyle: {
+            // Adds space between the icons
+            marginHorizontal: 10,
+          },
+          headerShown: false,
+        })}
+      >
+        <Tab.Screen name={HomeName} component={HomeScreen} />
+        <Tab.Screen name={UpgradesName} component={UpgradeScreen} />
+        <Tab.Screen name={LeaderBoardName} component={LeaderBoardScreen} />
+      </Tab.Navigator>
+    </CookieScoreProvider>
   );
 };
 
