@@ -1,15 +1,15 @@
 // CookieScore.tsx
 import { View, Text, Image } from "react-native";
-import React, { useEffect } from "react";
-import { useCookieScore } from "./CookieScoreContext"; // Adjust the import as necessary
+import React, { useEffect, useState } from "react";
+
+// Adjust the import as necessary
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
 const CookieScore = ({ Click }: any) => {
-  const { cookieScore, saveCookieScore } = useCookieScore(); // Use the context
-
+  const [cookieScore, saveCookieScore] = useState(0); // Use the context
   // useEffect to update cookieScore whenever Click prop changes and save the score
   useEffect(() => {
     const newScore = Math.round((cookieScore + 0.01) * 100) / 100;
