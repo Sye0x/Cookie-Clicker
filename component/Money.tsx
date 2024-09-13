@@ -6,13 +6,9 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { useMoneyScore } from "./MoneyContext";
-const Money = (Click: any) => {
+const Money = (Click: any, Click2: any) => {
   const { moneyScore, saveMoneyScore } = useMoneyScore(); // Use the context
   // useEffect to update cookieScore whenever Click prop changes and save the score
-  useEffect(() => {
-    const newScore = Math.round((moneyScore + 0.01) * 100) / 100;
-    saveMoneyScore(newScore); // Save the updated score
-  }, [Click]);
 
   return (
     <View

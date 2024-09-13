@@ -10,6 +10,7 @@ import {
 
 const HomeScreen = ({ navigation }) => {
   const [Clicks, setClick] = useState(0);
+  const [Clicks2, setClick2] = useState(0);
   const [showInfo, setShowInfo] = useState(false); // State to manage the visibility of text
 
   function CookieClick() {
@@ -19,10 +20,17 @@ const HomeScreen = ({ navigation }) => {
       setClick(1);
     }
   }
+  function sellCookie() {
+    if (Clicks2 === 1) {
+      setClick2(0);
+    } else {
+      setClick2(1);
+    }
+  }
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <CookieScore Click={Clicks} />
+      <CookieScore Click={Clicks} Click2={Clicks2} />
       <Money Click={Clicks} />
       <Pressable
         onPress={CookieClick}
@@ -47,6 +55,7 @@ const HomeScreen = ({ navigation }) => {
           ]}
           onLongPress={() => setShowInfo(true)} // Show text on long press
           onPressOut={() => setShowInfo(false)} // Hide text when the press is released
+          onPress={sellCookie}
         >
           <Text style={styles.SellText}>$</Text>
         </Pressable>
