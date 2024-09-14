@@ -3,22 +3,34 @@ import React, { useState } from "react";
 import CookieScore from "@/component/CookieScore";
 import Money from "@/component/Money";
 
+//context
+import { useCookieScore } from "../../component/CookieContext";
+import { useMoneyScore } from "../../component/MoneyContext";
+
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
 const HomeScreen = ({ navigation }) => {
+  const { cookieScore, saveCookieScore } = useCookieScore();
+  const { moneyScore, saveMoneyScore } = useMoneyScore();
+
+  const sellCookie = () => {
+    const cookiesToSell = Math.floor(cookieScore);
+
+    if (cookiesToSell > 0) {
+      const cookieDifference = cookieScore - cookiesToSell;
+      saveCookieScore(Math.round(cookieDifference * 100) / 100); // Decrease the cookie score
+      saveMoneyScore(moneyScore + Math.round(cookiesToSell * 0.5 * 100) / 100); // Increase the money score
+    }
+  };
+
   const [Clicks, setClick] = useState(0);
-  const [Clicks2, setClick2] = useState(0);
   const [showInfo, setShowInfo] = useState(false); // State to manage the visibility of text
 
   function CookieClick() {
-    if (Clicks === 1) {
-      setClick(0);
-    } else {
-      setClick(1);
-    }
+    setClick((prevClick) => (prevClick === 1 ? 0 : 1));
   }
 
   return (
@@ -39,7 +51,7 @@ const HomeScreen = ({ navigation }) => {
       </Pressable>
       <View style={styles.SellContainer}>
         {showInfo && ( // Conditionally render the text inside a <Text> component
-          <Text style={styles.infoText}>1 Cookie = 1$</Text>
+          <Text style={styles.infoText}>1 Cookie = 0.5$</Text>
         )}
         <Pressable
           style={({ pressed }) => [
@@ -48,6 +60,7 @@ const HomeScreen = ({ navigation }) => {
           ]}
           onLongPress={() => setShowInfo(true)} // Show text on long press
           onPressOut={() => setShowInfo(false)} // Hide text when the press is released
+          onPress={sellCookie}
         >
           <Text style={styles.SellText}>$</Text>
         </Pressable>
