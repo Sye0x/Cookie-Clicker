@@ -20,17 +20,10 @@ const HomeScreen = ({ navigation }) => {
       setClick(1);
     }
   }
-  function sellCookie() {
-    if (Clicks2 === 1) {
-      setClick2(0);
-    } else {
-      setClick2(1);
-    }
-  }
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <CookieScore Click={Clicks} Click2={Clicks2} />
+      <CookieScore Click={Clicks} />
       <Money Click={Clicks} />
       <Pressable
         onPress={CookieClick}
@@ -55,7 +48,6 @@ const HomeScreen = ({ navigation }) => {
           ]}
           onLongPress={() => setShowInfo(true)} // Show text on long press
           onPressOut={() => setShowInfo(false)} // Hide text when the press is released
-          onPress={sellCookie}
         >
           <Text style={styles.SellText}>$</Text>
         </Pressable>

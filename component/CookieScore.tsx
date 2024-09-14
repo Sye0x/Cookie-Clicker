@@ -14,16 +14,12 @@ import {
 
 const CookieScore = ({ Click }: any, { Click2 }: any) => {
   const { cookieScore, saveCookieScore } = useCookieScore(); // Use the context
-  const { MoneyScore, saveMoneyScore } = useMoneyScore(); // Use the context
+  // Use the context
   // useEffect to update cookieScore whenever Click prop changes and save the score
   useEffect(() => {
     const newScore = Math.round((cookieScore + 0.01) * 100) / 100;
     saveCookieScore(newScore); // Save the updated score
   }, [Click]);
-  useEffect(() => {
-    const newScore = Math.round(cookieScore);
-    saveMoneyScore(MoneyScore + newScore); // Save the updated score
-  }, [Click2]);
 
   return (
     <View
