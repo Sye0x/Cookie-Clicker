@@ -81,16 +81,31 @@ const UpgradeScreen = () => {
               source={require("../../assets/images/Money.png")}
               style={styles.Imagelook3}
             />
-            <Text style={styles.boxtext}>
-              Per
-              {
-                <Image
-                  source={require("../../assets/images/Cookie3.png")}
-                  style={styles.Imagelook4}
-                />
-              }{" "}
-              +0.1$
-            </Text>
+            <Text style={styles.boxtext}>Per Cookie +0.1$</Text>
+          </Pressable>
+        </View>
+        <View
+          style={{
+            marginTop: hp(1),
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <Pressable
+            style={({ pressed }) => [
+              styles.boxcontainer2,
+              pressed && { opacity: 0.8 },
+            ]}
+          >
+            <Text style={{ fontSize: wp(6) }}>0.1$</Text>
+          </Pressable>
+          <Pressable
+            style={({ pressed }) => [
+              styles.boxcontainer2,
+              pressed && { opacity: 0.8 },
+            ]}
+          >
+            <Text style={{ fontSize: wp(6) }}>0.1$</Text>
           </Pressable>
         </View>
       </View>
@@ -109,6 +124,17 @@ const styles = StyleSheet.create({
     width: wp(42),
     alignItems: "center",
     justifyContent: "center",
+    borderRadius: wp(8),
+  },
+  boxcontainer2: {
+    borderWidth: wp(1.5),
+    borderColor: "#603928",
+    backgroundColor: "#f3b366",
+    height: wp(15),
+    width: wp(42),
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: wp(8),
   },
   boxtext: {
     fontSize: wp(5),
@@ -140,13 +166,13 @@ const styles = StyleSheet.create({
     height: hp(8),
   },
   Imagelook3: {
-    width: wp(21),
+    width: wp(22),
     height: hp(8),
   },
   Imagelook4: {
-    width: wp(8),
-    height: hp(4),
-    paddingLeft: wp(1),
+    width: wp(10),
+    height: hp(8),
+    marginHorizontal: wp(5),
   },
   heading: {
     fontSize: hp(4),
