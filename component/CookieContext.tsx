@@ -31,8 +31,9 @@ export const CookieScoreProvider = ({
   // Function to save the cookie score to AsyncStorage
   const saveCookieScore = async (score: number) => {
     try {
+      console.log("Saving score to AsyncStorage:", score); // Debugging line
       await AsyncStorage.setItem("@cookieScore", score.toString());
-      setCookieScore(score); // Also update the state after saving
+      setCookieScore(score); // Update the state after saving
     } catch (e) {
       console.error("Failed to save cookie score:", e);
     }

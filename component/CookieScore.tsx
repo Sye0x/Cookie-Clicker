@@ -17,8 +17,12 @@ const CookieScore = ({ Click }: any, { Click2 }: any) => {
   // Use the context
   // useEffect to update cookieScore whenever Click prop changes and save the score
   useEffect(() => {
-    const newScore = Math.round((cookieScore + 0.01) * 100) / 100;
-    saveCookieScore(newScore); // Save the updated score
+    // Check if Click has occurred and then update the score
+    if (Click) {
+      const newScore = Math.round((cookieScore + 0.01) * 100) / 100;
+      console.log("New Score:", newScore); // Debugging line
+      saveCookieScore(newScore); // Save the updated score
+    }
   }, [Click]);
 
   return (
