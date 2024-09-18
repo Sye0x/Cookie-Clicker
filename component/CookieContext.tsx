@@ -10,7 +10,8 @@ export const CookieScoreProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [cookieScore, setCookieScore] = useState(0);
+  const [cookieScore, setCookieScore] = useState<number | null>(null); // Initialize to null instead of 0
+  const [isLoading, setIsLoading] = useState(true); // Loading state
 
   // useEffect to load cookie score from AsyncStorage when the component mounts
   useEffect(() => {
@@ -18,10 +19,14 @@ export const CookieScoreProvider = ({
       try {
         const storedScore = await AsyncStorage.getItem("@cookieScore");
         if (storedScore !== null) {
-          setCookieScore(parseFloat(storedScore));
+          setCookieScore(parseFloat(storedScore)); // Load score if it exists
+        } else {
+          setCookieScore(0); // Set to 0 if no score is stored
         }
       } catch (e) {
         console.error("Failed to load cookie score:", e);
+      } finally {
+        setIsLoading(false); // Mark loading as complete
       }
     };
 
@@ -38,6 +43,11 @@ export const CookieScoreProvider = ({
       console.error("Failed to save cookie score:", e);
     }
   };
+
+  // Prevent rendering children until the score is loaded
+  if (isLoading) {
+    return null; // Or render a loading spinner
+  }
 
   return (
     <CookieContext.Provider value={{ cookieScore, saveCookieScore }}>

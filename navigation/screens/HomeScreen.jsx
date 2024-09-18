@@ -30,7 +30,7 @@ const HomeScreen = ({ navigation }) => {
   const [showInfo, setShowInfo] = useState(false); // State to manage the visibility of text
 
   function CookieClick() {
-    setClick((prevClick) => (prevClick === 1 ? 0 : 1));
+    setClick(Clicks + 1);
   }
 
   return (
