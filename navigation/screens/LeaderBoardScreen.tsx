@@ -12,13 +12,7 @@ const LeaderBoardScreen = () => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <View style={styles.headingBox}>
-        <Text style={styles.heading}>Upgrades</Text>
-        <Entypo
-          name="arrow-up"
-          size={hp(5)}
-          color="#fabf5f"
-          style={{ paddingTop: hp(0.5) }}
-        />
+        <Text style={styles.heading}>LeaderBoard</Text>
       </View>
     </View>
   );
