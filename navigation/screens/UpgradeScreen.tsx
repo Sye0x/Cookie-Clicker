@@ -1,6 +1,6 @@
 import { View, Text, Pressable, StyleSheet, Image } from "react-native";
 import React from "react";
-
+import { useState } from "react";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -12,9 +12,14 @@ import Money from "@/component/Money";
 import Entypo from "@expo/vector-icons/Entypo";
 
 const UpgradeScreen = () => {
+  const [Clicks2, SetClicks2] = useState(0);
+  function CookieClick() {
+    SetClicks2(Clicks2 + 1);
+    console.log("here");
+  }
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <CookieScore />
+      <CookieScore Click={0} Click2={Clicks2} />
       <Money />
       <View
         style={{
@@ -64,6 +69,7 @@ const UpgradeScreen = () => {
               styles.boxcontainer,
               pressed && { opacity: 0.8 },
             ]}
+            onPress={CookieClick}
           >
             <Image
               source={require("../../assets/images/Cookie3.png")}

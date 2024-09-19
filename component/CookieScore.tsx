@@ -12,18 +12,29 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
-const CookieScore = ({ Click }: any) => {
+const CookieScore = ({ Click }: any, { Click2 }: any) => {
   const { cookieScore, saveCookieScore } = useCookieScore(); // Use the context
+  const [cookieperclick, setcookieperclick] = useState(0.01);
+
   // Use the context
   // useEffect to update cookieScore whenever Click prop changes and save the score
   useEffect(() => {
     if (Click > 0) {
       // Only increment cookie score if a click has occurred
-      const newScore = Math.round((cookieScore + 0.01) * 100) / 100;
+      const newScore = Math.round((cookieScore + cookieperclick) * 100) / 100;
       console.log("New Score:", newScore); // Debugging line
       saveCookieScore(newScore); // Save the updated score
     }
   }, [Click]);
+
+  useEffect(() => {
+    if (Click2 > 0) {
+      const value = cookieperclick + cookieperclick;
+      setcookieperclick(value);
+      console.log("here2");
+      console.log({ cookieperclick });
+    }
+  }, [Click2]);
 
   return (
     <View
