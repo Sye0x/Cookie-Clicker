@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import React from "react";
-
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -12,14 +12,35 @@ const LeaderBoardScreen = () => {
       <View style={styles.headingBox}>
         <Text style={styles.heading}>LeaderBoard</Text>
       </View>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.rankbox}></View>
-        <View style={styles.rankbox}></View>
-        <View style={styles.rankbox}></View>
-        <View style={styles.rankbox}></View>
-        <View style={styles.rankbox}></View>
-        <View style={styles.rankbox}></View>
-        <View style={styles.rankbox}></View>
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.rankbox}>
+          <Text style={styles.ranktext}>#1 Cookie King </Text>
+          <FontAwesome6 name="chess-king" size={32} color="#fabf5f" />
+        </View>
+        <View style={styles.rankbox}>
+          <Text style={styles.ranktext}>#2 Cookie Queen</Text>
+        </View>
+        <View style={styles.rankbox}>
+          <Text style={styles.ranktext}>#3 Cookie Bishop</Text>
+        </View>
+        <View style={styles.rankbox}>
+          <Text style={styles.ranktext}>#4 Cookie Knight</Text>
+        </View>
+        <View style={styles.rankbox}>
+          <Text style={styles.ranktext}>#5 Cookie Rookie</Text>
+        </View>
+        <View style={styles.rankbox}>
+          <Text style={styles.ranktext}>#6 Cookie Soldier</Text>
+        </View>
+        <View style={styles.rankbox}>
+          <Text style={styles.ranktext}>#7 Cookie Bum</Text>
+        </View>
+        <View style={styles.rankbox}>
+          <Text style={styles.ranktext}>#8 You</Text>
+        </View>
       </ScrollView>
     </View>
   );
@@ -45,6 +66,15 @@ const styles = StyleSheet.create({
     borderRadius: wp(3), // Optional: rounding corners for better design
     borderColor: "#fabf5f",
     backgroundColor: "#fff7e6", // Optional: background color for the boxes
+    justifyContent: "space-evenly",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  ranktext: {
+    marginHorizontal: wp(2.5),
+    fontSize: wp(7),
+    fontWeight: "600",
+    color: "#fabf5f",
   },
   heading: {
     fontSize: hp(5),
