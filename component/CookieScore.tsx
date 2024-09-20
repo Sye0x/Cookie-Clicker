@@ -53,7 +53,7 @@ const CookieScore = ({ Click }: any, { Click2 }: any) => {
       {/* Display the updated cookieScore value */}
       <Text style={{ fontSize: 30, paddingTop: wp(1.2) }}>{cookieScore}</Text>
       <Image
-        style={{ height: hp(6), width: hp(6) }}
+        style={{ height: hp(6), width: hp(6), marginLeft: wp(2) }}
         source={require("../assets/images/Cookie3.png")}
       />
     </View>
