@@ -40,11 +40,14 @@ const CookieScore = ({ Click }: any, { Click2 }: any) => {
     <View
       style={{
         flexDirection: "row",
-        marginTop: wp(6.5),
+        marginTop: wp(8.5),
         justifyContent: "flex-end",
         width: wp(88),
-        borderWidth: 2,
+        borderWidth: 3,
         paddingHorizontal: wp(2),
+        borderColor: "#f3b366",
+        borderTopLeftRadius: wp(5),
+        borderTopRightRadius: wp(5),
       }}
     >
       {/* Display the updated cookieScore value */}
