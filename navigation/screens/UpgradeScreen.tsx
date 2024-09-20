@@ -28,7 +28,9 @@ const UpgradeScreen = () => {
         }}
       >
         <Pressable style={styles.itembox}>
-          <Text style={[styles.TEXT, { paddingTop: hp(1.6) }]}>
+          <Text
+            style={[styles.TEXT, { paddingTop: hp(1.6), color: "#d27d2f" }]}
+          >
             Sell cookie
           </Text>
 
@@ -40,14 +42,17 @@ const UpgradeScreen = () => {
             <Text
               style={[
                 styles.TEXT,
-                { paddingTop: hp(1.6), paddingHorizontal: wp(2) },
+                {
+                  paddingTop: hp(1.6),
+                  paddingHorizontal: wp(2),
+                  color: "#d27d2f",
+                },
               ]}
             >
               = 0.5$
             </Text>
           </View>
         </Pressable>
-
         <View style={styles.headingBox}>
           <Text style={styles.heading}>Upgrades</Text>
           <Entypo
@@ -57,6 +62,7 @@ const UpgradeScreen = () => {
             style={{ paddingTop: hp(0.5) }}
           />
         </View>
+
         <View
           style={{
             marginTop: hp(4),
@@ -64,32 +70,22 @@ const UpgradeScreen = () => {
             justifyContent: "space-between",
           }}
         >
-          <Pressable
-            style={({ pressed }) => [
-              styles.boxcontainer,
-              pressed && { opacity: 0.8 },
-            ]}
-            onPress={CookieClick}
-          >
+          <View style={styles.boxcontainer}>
             <Image
               source={require("../../assets/images/Cookie3.png")}
               style={styles.Imagelook2}
             />
             <Text style={styles.boxtext}>Per Click +0.1</Text>
-          </Pressable>
-          <Pressable
-            style={({ pressed }) => [
-              styles.boxcontainer,
-              pressed && { opacity: 0.8 },
-            ]}
-          >
+          </View>
+          <View style={styles.boxcontainer}>
             <Image
               source={require("../../assets/images/Money.png")}
               style={styles.Imagelook3}
             />
             <Text style={styles.boxtext}>Per Cookie +0.1$</Text>
-          </Pressable>
+          </View>
         </View>
+
         <View
           style={{
             marginTop: hp(1),
@@ -103,7 +99,7 @@ const UpgradeScreen = () => {
               pressed && { opacity: 0.8 },
             ]}
           >
-            <Text style={{ fontSize: wp(6) }}>0.1$</Text>
+            <Text style={styles.buttontext}>0.1$</Text>
           </Pressable>
           <Pressable
             style={({ pressed }) => [
@@ -111,7 +107,7 @@ const UpgradeScreen = () => {
               pressed && { opacity: 0.8 },
             ]}
           >
-            <Text style={{ fontSize: wp(6) }}>0.1$</Text>
+            <Text style={styles.buttontext}>0.1$</Text>
           </Pressable>
         </View>
       </View>
@@ -123,8 +119,8 @@ export default UpgradeScreen;
 
 const styles = StyleSheet.create({
   boxcontainer: {
-    borderWidth: wp(1.5),
-    borderColor: "#603928",
+    borderWidth: wp(1),
+    borderColor: "#d27d2f",
     backgroundColor: "#f3b366",
     height: wp(42),
     width: wp(42),
@@ -133,8 +129,8 @@ const styles = StyleSheet.create({
     borderRadius: wp(8),
   },
   boxcontainer2: {
-    borderWidth: wp(1.5),
-    borderColor: "#603928",
+    borderWidth: wp(1),
+    borderColor: "#d27d2f",
     backgroundColor: "#f3b366",
     height: wp(15),
     width: wp(42),
@@ -144,11 +140,17 @@ const styles = StyleSheet.create({
   },
   boxtext: {
     fontSize: wp(5),
-    color: "#603928",
+    color: "#d27d2f",
+    fontWeight: "600",
+  },
+  buttontext: {
+    fontSize: wp(6),
+    color: "#d27d2f",
+    fontWeight: "600",
   },
   itembox: {
     borderWidth: wp(0.8),
-    borderColor: "#603928",
+    borderColor: "#d27d2f",
     borderRadius: wp(2),
     width: wp(85),
     height: hp(7),
@@ -193,7 +195,7 @@ const styles = StyleSheet.create({
     marginVertical: hp(4),
     borderWidth: wp(1.2),
     borderRadius: wp(5),
-    borderColor: "#603928",
+    borderColor: "#f3b366",
     backgroundColor: "#d27d2f",
     height: hp(7.5),
     flexDirection: "row",

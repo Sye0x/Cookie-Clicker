@@ -53,6 +53,7 @@ const MainContainer = () => {
             },
             tabBarStyle: {
               width: wp(90),
+
               height: hp(8),
               paddingTop: hp(1),
               borderRadius: wp(50),

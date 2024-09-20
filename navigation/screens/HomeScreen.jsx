@@ -1,5 +1,14 @@
-import { View, Text, Image, Pressable, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  Pressable,
+  StyleSheet,
+  ImageBackground,
+} from "react-native";
 import React, { useState } from "react";
+
+//components
 import CookieScore from "@/component/CookieScore";
 import Money from "@/component/Money";
 
@@ -34,7 +43,7 @@ const HomeScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View style={styles.background}>
       <CookieScore Click={Clicks} />
       <Money Click={Clicks} />
       <Pressable
@@ -72,6 +81,13 @@ const HomeScreen = ({ navigation }) => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    width: "100%", // Ensures the width covers the screen width
+    height: "100%", // Ensures the height covers the screen height
+    justifyContent: "center",
+    alignItems: "center",
+  },
   SellContainer: {
     marginBottom: hp(2.5),
     width: wp(90),
