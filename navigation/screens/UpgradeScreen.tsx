@@ -14,12 +14,12 @@ import Entypo from "@expo/vector-icons/Entypo";
 const UpgradeScreen = () => {
   const [Clicks2, SetClicks2] = useState(0);
   function CookieClick() {
-    SetClicks2(2);
+    SetClicks2(Clicks2 + 1);
     console.log("here");
   }
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <CookieScore Click={1} Click2={Clicks2} />
+      <CookieScore Clicks={Clicks2} Click2={1} />
       <Money />
       <View
         style={{
@@ -98,6 +98,7 @@ const UpgradeScreen = () => {
               styles.boxcontainer2,
               pressed && { opacity: 0.8 },
             ]}
+            onPress={CookieClick}
           >
             <Text style={styles.buttontext}>0.1$</Text>
           </Pressable>

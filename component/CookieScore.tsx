@@ -28,13 +28,15 @@ const CookieScore = ({ Click }: any, { Click2 }: any) => {
   }, [Click]);
 
   useEffect(() => {
-    if (Click2 > 0) {
-      const value = cookieperclick + cookieperclick;
-      setcookieperclick(value);
-      console.log("here2");
-      console.log({ cookieperclick });
-    }
-  }, [Click2]);
+    console.log("Click2 value:", Click2); // Log Click2 to see its value
+    if (Click2 === 1)
+      setcookieperclick((prevValue) => {
+        const newValue = prevValue * 2;
+        console.log("Doubling cookiePerClick to:", newValue);
+        Click2 = 0;
+        return newValue;
+      });
+  }, [Click]);
 
   return (
     <View
